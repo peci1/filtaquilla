@@ -1177,9 +1177,9 @@ Components.utils.import("resource:///modules/MailUtils.js");
       {
         var tagArray = tagService.getAllTags({});
         var tagKeys = {};
-        for each (var tagInfo in tagArray)
-          if (tagInfo.tag)
-            tagKeys[tagInfo.key] = true;
+        for (var tagInfo in tagArray)
+          if (tagArray[tagInfo].tag)
+            tagKeys[tagArray[tagInfo].key] = true;
 
         let thread = message.folder.msgDatabase.GetThreadContainingMsgHdr(message);
 
@@ -1539,9 +1539,9 @@ Components.utils.import("resource:///modules/MailUtils.js");
     //  -- msgHdrViewOverlay.js SetTagHeader()
     let tagArray = tagService.getAllTags({});
     let tagKeys = {};
-    for each (let tagInfo in tagArray)
-      if (tagInfo.tag)
-        tagKeys[tagInfo.key] = true;
+    for (let tagInfo in tagArray)
+      if (tagArray[tagInfo].tag)
+        tagKeys[tagArray[tagInfo].key] = true;
 
     // extract the tag keys from the msgHdr
     let msgKeyArray = aMsgHdr.getStringProperty("keywords").split(" ");
