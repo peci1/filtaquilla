@@ -409,7 +409,7 @@ Components.utils.import("resource:///modules/MailUtils.js");
       apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow)
       {
         var file = Cc["@mozilla.org/file/local;1"]
-                     .createInstance(Ci.nsILocalFile);
+                     .createInstance(Ci.nsIFile);
         file.initWithPath(aActionValue);
         file.launch();
       },
@@ -428,7 +428,7 @@ Components.utils.import("resource:///modules/MailUtils.js");
       apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow)
       {
         var file = Cc["@mozilla.org/file/local;1"]
-                     .createInstance(Ci.nsILocalFile);
+                     .createInstance(Ci.nsIFile);
         // the action value string consists of comma-separated fields. The
         // first field is the file URL for the process to run. Subsequent
         // fields are parameter strings to pass to the file. These parameters
@@ -612,7 +612,7 @@ Components.utils.import("resource:///modules/MailUtils.js");
       apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow)
       {
         let directory = Cc["@mozilla.org/file/local;1"]
-                           .createInstance(Ci.nsILocalFile);
+                           .createInstance(Ci.nsIFile);
         directory.initWithPath(aActionValue);
         let callbackObject = new SaveAttachmentCallback(directory, false);
 
@@ -685,7 +685,7 @@ Components.utils.import("resource:///modules/MailUtils.js");
       apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow)
       {
         let directory = Cc["@mozilla.org/file/local;1"]
-                           .createInstance(Ci.nsILocalFile);
+                           .createInstance(Ci.nsIFile);
         directory.initWithPath(aActionValue);
         let callbackObject = new SaveAttachmentCallback(directory, true);
 
@@ -748,7 +748,7 @@ Components.utils.import("resource:///modules/MailUtils.js");
         }
 
         let directory = Cc["@mozilla.org/file/local;1"]
-                           .createInstance(Ci.nsILocalFile);
+                           .createInstance(Ci.nsIFile);
         directory.initWithPath(path);
         for (let i = 0; i < msgHdrs.length; i++)
         {
