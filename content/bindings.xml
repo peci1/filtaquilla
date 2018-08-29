@@ -72,18 +72,20 @@
             fp.appendFilters(nsIFilePicker.filterAll);
             try {
               var file = Components.classes["@mozilla.org/file/local;1"]
-                                   .createInstance(Components.interfaces.nsILocalFile);
+                                   .createInstance(Components.interfaces.nsIFile);
               file.initWithPath(this.textbox.value);
               fp.displayDirectory = file.parent;
               fp.defaultString = file.leafName;
             }
             catch (e) {}
  
-            var ret = fp.show();
-            if (ret == nsIFilePicker.returnOK) {
+            fp.open(rv => {
+              if (rv != nsIFilePicker.returnOK) {
+                return;
+              }
               this.textbox.value = fp.file.path;
               this.hbox.value = fp.file.path;
-            }
+            });
           ]]>
         </body>
       </method>
@@ -91,7 +93,7 @@
         <body>
           <![CDATA[
           var file = Components.classes["@mozilla.org/file/local;1"]
-                               .createInstance(Components.interfaces.nsILocalFile);
+                               .createInstance(Components.interfaces.nsIFile);
           file.initWithPath(this.textbox.value);
           file.launch();
           ]]>
@@ -131,7 +133,7 @@
             fp.appendFilters(nsIFilePicker.filterAll);
             try {
               var file = Components.classes["@mozilla.org/file/local;1"]
-                                   .createInstance(Components.interfaces.nsILocalFile);
+                                   .createInstance(Components.interfaces.nsIFile);
               // the file url is the first comma-separated parameter
               var filePath = this.textbox.value.split(',')[0];
               file.initWithPath(filePath);
@@ -140,12 +142,14 @@
             }
             catch (e) {}
  
-            var ret = fp.show();
-            if (ret == nsIFilePicker.returnOK) {
+            fp.open(rv => {
+              if (rv != nsIFilePicker.returnOK) {
+                return;
+              }
               // We will setup a default using the subject
               this.textbox.value = fp.file.path + ",@SUBJECT@,@MESSAGEID@";
               this.hbox.value = this.textbox.value;
-            }
+            });
           ]]>
         </body>
       </method>
@@ -250,7 +254,7 @@
             fp.appendFilters(nsIFilePicker.filterAll);
             try {
               var file = Components.classes["@mozilla.org/file/local;1"]
-                                   .createInstance(Components.interfaces.nsILocalFile);
+                                   .createInstance(Components.interfaces.nsIFile);
               // the file url is the first comma-separated parameter
               var filePath = this.textbox.value;
               file.initWithPath(filePath);
@@ -259,12 +263,14 @@
             }
             catch (e) {}
  
-            var ret = fp.show();
-            if (ret == nsIFilePicker.returnOK) {
+            fp.open(rv => {
+              if (rv != nsIFilePicker.returnOK) {
+                return;
+              }
               // We will setup a default using the subject
               this.textbox.value = fp.file.path;
               this.hbox.value = this.textbox.value;
-            }
+            });
           ]]>
         </body>
       </method>

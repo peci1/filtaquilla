@@ -31,6 +31,7 @@
 -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://filtaquilla/locale/prefwindow.dtd">
 <prefwindow id="filtaquillaPreferences"
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
@@ -68,13 +69,13 @@
       <preference id="ThreadAnyTagEnabled" name="extensions.filtaquilla.ThreadAnyTagEnabled" type="bool"/>
     </preferences>
     <label value="&optionsIntro;"/>
-    <tabbox id="filtaquillatabbox" flex="1">
+    <tabbox id="filtaquillatabbox">
       <tabs>
         <tab label="&filterActions;"/>
         <tab label="&searchTerms;"/>
       </tabs>
 
-      <tabpanels flex="1">
+      <tabpanels>
         <!-- Filter actions -->
         <tabpanel orient="vertical">
           <grid>
